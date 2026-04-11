@@ -348,126 +348,13 @@ html { scroll-padding-top: calc(var(--header-height) + 1rem); }
    Dark Glass Hero, Animations, Parallax
    ========================================= */
 
-/* Hero Dark Glass Effect */
-.hero {
-  position: relative;
-  width: 100%;
-  min-height: clamp(500px, 70vh, 780px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  isolation: isolate;
-}
+/* NOTE: Hero inline styles are defined in index.html <style> tag.
+   The following CSS has been commented out to avoid conflicts:
+   - .hero-content, .hero-text h1/p, .hero .cta-btn
+   - These override inline styles and break the hero visibility
+*/
 
-/* Layer multipli per effetto Dark Glass */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.75) 100%),
-    url('images/hero-image.jpeg');
-  background-size: cover, cover;
-  background-position: center, center;
-  z-index: 0;
-  animation: hero-scale 15s ease-in-out infinite alternate;
-}
-
-/* Layer decorativo con sfocatura */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(125, 71, 31, 0.12) 0%, transparent 60%);
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Hero content */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 950px;
-  margin: 0 auto;
-  padding: clamp(3.5rem, 8vw, 6rem) clamp(1rem, 4vw, 2.5rem);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  gap: 1.8rem;
-  animation: fade-in-up 0.8s cubic-bezier(0.16, 0.84, 0.44, 1);
-}
-
-/* Hero text con gradient animato */
-.hero-text h1 {
-  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
-  line-height: 1.05;
-  letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #ffffff 0%, #f2e9dd 50%, #ffffff 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-wrap: balance;
-  animation: gradient-move 8s ease-in-out infinite;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.hero-text p {
-  font-size: clamp(1.05rem, 1.2vw + 0.9rem, 1.35rem);
-  color: #f4f4f4;
-  max-width: 60ch;
-  text-wrap: pretty;
-  line-height: 1.6;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-}
-
-/* Hero CTA con effetti glass */
-.hero .cta-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.hero .cta-btn {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 1rem 1.75rem;
-  border-radius: 1000px;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  line-height: 1;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-}
-
-.hero .cta-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
-}
-
-/* Parallax container */
-.hero-parallel {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Animations */
+/* Animations keyframes (NOT conflicting with inline styles) */
 @keyframes hero-scale {
   0% {
     transform: scale(1);
@@ -489,7 +376,8 @@ html { scroll-padding-top: calc(var(--header-height) + 1rem); }
   }
 }
 
-/* Parallax layer movement */
+/* Parallax layer - commented out to avoid conflicts */
+/*
 .parallax-layer {
   position: absolute;
   top: 0;
@@ -498,20 +386,9 @@ html { scroll-padding-top: calc(var(--header-height) + 1rem); }
   height: 100%;
   transform: translateZ(0);
 }
+*/
 
-/* Animation fade-in-up */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Enhanced animations per sezioni */
+/* Enhanced animations per sezioni (non-conflicting) */
 section[id] {
   opacity: 0;
   transform: translateY(30px);
@@ -521,15 +398,6 @@ section[id] {
 section[id].in-view {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Glassmorphism cards per elementi specifici */
-.glass-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
 }
 
 /* Menu section (even without HTML, keeping styles for future use) */

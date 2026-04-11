@@ -108,11 +108,11 @@
   body.nav-open .nav-toggle span::before { top:0; rotate:42deg; }
   body.nav-open .nav-toggle span::after { top:0; rotate:-42deg; }
     @media (min-width: 880px) { nav.main-nav { position:static; width:auto; translate:0 0; background:transparent; box-shadow:none; backdrop-filter:none; flex-direction:row; inset:auto; padding:0; height:fit-content; flex-direction:row; } nav.main-nav ul { flex-direction:row; } .nav-toggle { display:none; } nav.main-nav a { padding:.75rem 1rem; font-size:1rem; } nav.main-nav a::after { inset:auto .75rem 6px .75rem; } }
-  .hero { position:relative; width:100%; min-height:clamp(500px,70vh,780px); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .hero { position:relative; width:100%; min-height:clamp(500px,70vh,780px); display:flex; align-items:center; justify-content:center; overflow:visible; }
   /* Hero Image - z-index:0 */
-  .hero::after { content:""; position:absolute; inset:0; background:url('images/hero-image.jpeg') center/cover no-repeat; z-index:0; transform:scale(1.05); }
-  /* Dark Glass overlay - z-index:1 */
-  .hero::before { content:""; position:absolute; inset:0; background:linear-gradient(200deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.5) 100%); z-index:1; }
+  .hero::after { content:""; position:absolute; inset:0; background:url('images/hero-image.jpeg') center/cover no-repeat; z-index:1; transform:scale(1.05); display:block; }
+  /* Dark Glass overlay - z-index:0 (under image) */
+  .hero::before { content:""; position:absolute; inset:0; background:linear-gradient(200deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.5) 100%); z-index:0; }
   .hero-content { position:relative; z-index:2; max-width:950px; margin:0 auto; padding:clamp(3.5rem,8vw,6rem) clamp(1rem,4vw,2.5rem); display:flex; flex-direction:column; text-align:center; gap:1.8rem; }
   .hero-text h1 { font-size:clamp(2.2rem,5.5vw,3.4rem); line-height:1.05; letter-spacing:-.5px; background:linear-gradient(90deg,#fff,#f2e9dd,#fff); -webkit-background-clip:text; background-clip:text; color:transparent; text-wrap:balance; }
     .hero-text p { font-size:clamp(1.05rem,1.2vw + .9rem,1.35rem); color:#f4f4f4; max-width:60ch; text-wrap:pretty; }

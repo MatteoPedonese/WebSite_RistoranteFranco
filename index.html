@@ -1,129 +1,377 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ristorante "Da Franco"</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <title>Ristorante Da Franco | Montemagno Camaiore | Cucina Toscana e Pizzeria</title>
+  <meta name="description" content="Ristorante Da Franco a Montemagno Camaiore: cucina tipica toscana autentica, pizzeria con forno a legna, carne alla griglia, specialità locali. Prenota ora il tuo tavolo!">
+  <meta name="keywords" content="ristorante montemagno, pizzeria camaiore, cucina toscana, carne griglia, da franco, lucca versilia, pranzo cena, pizza forno legna, eventi, menu tradizionale, bistecca fiorentina, tortelli ragù">
+  
+  <!-- Geo Tags -->
+  <meta name="geo.region" content="IT-LU">
+  <meta name="geo.placename" content="Montemagno, Camaiore">
+  <meta name="geo.position" content="43.910692;10.3361982">
+  <meta name="ICBM" content="43.910692, 10.3361982">
+  
+  <!-- Robots and Indexing -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  
+  <!-- Open Graph Enhanced -->
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Ristorante Da Franco">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:title" content="Ristorante Da Franco | Autentica Cucina Toscana a Montemagno Camaiore">
+  <meta property="og:description" content="Scopri i sapori autentici della Toscana: cucina tradizionale, pizza al forno a legna, carne alla griglia. 30+ anni di passione culinaria.">
+  <meta property="og:url" content="https://www.ristorantedafranco.it/">
+  <meta property="og:image" content="https://www.ristorantedafranco.it/images/hero-image.jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Esterno del Ristorante Da Franco a Montemagno Camaiore">
+  
+  <!-- Twitter Card Enhanced -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ristorante Da Franco | Autentica Cucina Toscana">
+  <meta name="twitter:description" content="Cucina tipica toscana, pizzeria, carne alla griglia. Prenota un tavolo da Da Franco!">
+  <meta name="twitter:image" content="https://www.ristorantedafranco.it/images/hero-image.jpeg">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  
+  <!-- DNS Prefetch -->
+  <link rel="dns-prefetch" href="//www.google.com">
+  <link rel="dns-prefetch" href="//static.tacdn.com">
+  
+  <!-- Favicon and Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  
+  <!-- Nessun font esterno: solo system font stack per performance -->
+
+  <!-- Critical CSS inline (base, tokens, header, hero essentials) -->
+  <style>
+    :root {
+      --brand-bg: #eeeee6;
+      --brand-text: #1a1a1a;
+      --brand-accent: #7d471f;
+      --brand-accent-2: #d4af37;
+      --brand-muted: #666666;
+      --radius: 14px;
+      --shadow-sm: 0 2px 6px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 24px -4px rgba(0,0,0,0.15);
+      --header-height: 70px;
+      --transition: 160ms cubic-bezier(.4,0,.2,1);
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html { font-size: clamp(16px, 1.1vw + 14px, 18px); scroll-behavior:smooth; }
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif; background: var(--brand-bg); color: var(--brand-text); line-height:1.55; min-height:100dvh; -webkit-font-smoothing: antialiased; }
+    body.nav-open { overflow:hidden; }
+    .skip-link { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip-link:focus { position:fixed; left:1rem; top:1rem; width:auto; height:auto; padding:.75rem 1rem; background:#fff; color:#000; z-index:2000; border-radius:var(--radius); box-shadow:var(--shadow-sm); }
+    header { position:sticky; top:0; z-index:1000; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background:rgba(255,255,255,0.65); border-bottom:1px solid rgba(0,0,0,0.05); }
+    @supports not (backdrop-filter: blur(12px)) { header { background:#ffffffee; } }
+    .header-container { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:0 clamp(1rem,3vw,2rem); height:var(--header-height); }
+    .logo img { height:58px; width:auto; display:block; border-radius:8px; }
+  nav.main-nav { --_side: clamp(220px,60vw,340px); position:fixed; inset:0 0 0 auto; width:var(--_side); translate:100% 0; background:#ffffff; box-shadow:-4px 0 18px -6px rgba(0,0,0,0.2); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding: clamp(2rem,4vh,3rem) 1.75rem; display:flex; flex-direction:column; gap:.5rem; transition:translate var(--transition), background var(--transition); }
+  /* Mobile full-screen menu */
+  @media (max-width:879px){
+    nav.main-nav { inset:0; width:100%; height:100dvh; translate:0 -100%; padding:clamp(4rem,10vh,6rem) clamp(1.5rem,6vw,2.25rem) 3rem; align-items:center; justify-content:flex-start; gap:1rem; background:#ffffff; box-shadow:none; border:none; }
+    body.nav-open nav.main-nav { translate:0 0; }
+    nav.main-nav ul { width:100%; align-items:center; gap:.75rem; }
+    nav.main-nav a { font-size:1.3rem; padding:1rem 1.25rem; width:100%; text-align:center; border-radius:12px; }
+    nav.main-nav a::after { inset:auto 1.25rem 10px 1.25rem; }
+    body.nav-open::before { content:""; position:fixed; inset:0; background:rgba(0,0,0,.55); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); z-index:900; }
+    header, .nav-toggle, nav.main-nav { z-index:1000; }
+  }
+    body.nav-open nav.main-nav { translate:0 0; }
+    nav.main-nav ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+    nav.main-nav a { position:relative; display:block; padding:.9rem 1rem; font-weight:600; color:var(--brand-accent); text-decoration:none; letter-spacing:.5px; border-radius:10px; font-size:1.05rem; }
+    nav.main-nav a::after { content:""; position:absolute; inset:auto 1rem 8px 1rem; height:2px; background:linear-gradient(90deg,var(--brand-accent),var(--brand-accent-2)); scale:0 1; transform-origin:left; transition:scale .35s ease; border-radius:2px; }
+    nav.main-nav a:focus-visible, nav.main-nav a:hover { background:rgba(125,71,31,0.07); }
+    nav.main-nav a:hover::after, nav.main-nav a:focus-visible::after, nav.main-nav a.is-active::after { scale:1 1; }
+  .nav-toggle { position:relative; z-index:1100; background:#ffffff; border:1px solid rgba(0,0,0,0.18); width:48px; height:48px; border-radius:14px; display:grid; place-items:center; cursor:pointer; transition:background var(--transition), border-color var(--transition), box-shadow var(--transition); box-shadow:0 4px 14px -6px rgba(0,0,0,.35); }
+  .nav-toggle:hover { background:#ffffff; box-shadow:0 6px 18px -6px rgba(0,0,0,.4); }
+  .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { content:""; display:block; width:26px; height:3px; background:var(--brand-accent); border-radius:3px; position:relative; transition:transform .4s cubic-bezier(.65,.05,.36,1), opacity .25s ease, rotate .4s; }
+    .nav-toggle span::before { position:absolute; top:-8px; left:0; }
+    .nav-toggle span::after { position:absolute; top:8px; left:0; }
+  body.nav-open .nav-toggle span { background:transparent; }
+  body.nav-open .nav-toggle span::before { top:0; rotate:42deg; }
+  body.nav-open .nav-toggle span::after { top:0; rotate:-42deg; }
+    @media (min-width: 880px) { nav.main-nav { position:static; width:auto; translate:0 0; background:transparent; box-shadow:none; backdrop-filter:none; flex-direction:row; inset:auto; padding:0; height:fit-content; flex-direction:row; } nav.main-nav ul { flex-direction:row; } .nav-toggle { display:none; } nav.main-nav a { padding:.75rem 1rem; font-size:1rem; } nav.main-nav a::after { inset:auto .75rem 6px .75rem; } }
+  .hero { position:relative; width:100%; min-height:clamp(500px,70vh,780px); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .hero::after { content:""; position:absolute; inset:0; background:url('images/hero-image.jpeg') center/cover no-repeat; z-index:0; transform:scale(1.05); }
+  .hero::before { content:""; position:absolute; inset:0; background:linear-gradient(200deg,#00000055 0%,#000000aa 65%, #000000dc 100%); z-index:1; }
+  .hero-content { position:relative; z-index:2; max-width:950px; margin:0 auto; padding:clamp(3.5rem,8vw,6rem) clamp(1rem,4vw,2.5rem); display:flex; flex-direction:column; text-align:center; gap:1.8rem; }
+  .hero-text h1 { font-size:clamp(2.2rem,5.5vw,3.4rem); line-height:1.05; letter-spacing:-.5px; background:linear-gradient(90deg,#fff,#f2e9dd,#fff); -webkit-background-clip:text; background-clip:text; color:transparent; text-wrap:balance; }
+    .hero-text p { font-size:clamp(1.05rem,1.2vw + .9rem,1.35rem); color:#f4f4f4; max-width:60ch; text-wrap:pretty; }
+  .cta-btn { background:var(--brand-accent); color:#fff; display:inline-flex; align-items:center; gap:.6rem; padding:1rem 1.75rem; border:none; border-radius:1000px; font-weight:600; font-size:1rem; letter-spacing:.5px; text-decoration:none; line-height:1; box-shadow:0 4px 12px -4px rgba(0,0,0,.35); transition:background var(--transition), transform var(--transition), box-shadow var(--transition); }
+  .cta-btn:hover, .cta-btn:focus-visible { background:var(--brand-accent-2); transform:translateY(-3px); box-shadow:0 10px 26px -8px rgba(0,0,0,.5); }
+  .cta-btn:active { transform:translateY(-1px); }
+  .cta-group { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-top:.5rem; }
+  .btn-outline { background:rgba(255,255,255,0.08); color:#fff; border:2px solid var(--brand-accent-2); box-shadow:0 4px 12px -4px rgba(0,0,0,.35); }
+  .btn-outline:hover, .btn-outline:focus-visible { background:var(--brand-accent-2); color:#1a1a1a; }
+    @media (prefers-reduced-motion: reduce) { * { animation-duration:1ms !important; animation-iteration-count:1 !important; transition-duration:1ms !important; scroll-behavior:auto !important;} }
+  @media (prefers-color-scheme: dark) { body { background:#111; color:#f1f1f1; } header { background:rgba(20,20,20,0.75); border-color:#222; } nav.main-nav { background:#1c1c1c; } nav.main-nav a { color:#f0e6dc; } nav.main-nav a:hover { background:rgba(255,255,255,0.08); } .hero::before { background:linear-gradient(200deg,#00000055 0%,#000000b5 65%, #000000f0 100%); } .hero-text p { color:#e7e7e7; } .cta-btn { background:var(--brand-accent); } .cta-btn:hover, .cta-btn:focus-visible { background:var(--brand-accent-2); } .btn-outline { background:rgba(255,255,255,0.12); } }
+  </style>
+  
+  <!-- Main Stylesheet (non-critical) -->
   <link rel="stylesheet" href="styles.css">
+  
+  <!-- Canonical and Hreflang -->
+  <link rel="canonical" href="https://www.ristorantedafranco.it/">
+  <link rel="alternate" hreflang="it" href="https://www.ristorantedafranco.it/">
+  <link rel="alternate" hreflang="x-default" href="https://www.ristorantedafranco.it/">
+  
+  <!-- Enhanced Schema.org JSON-LD -->
+  <!-- Enhanced Schema.org JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Ristorante Da Franco",
+      "alternateName": "Da Franco",
+      "description": "Ristorante con cucina tipica toscana, pizzeria e specialità alla griglia a Montemagno Camaiore. 30 anni di tradizione culinaria.",
+      "image": [
+        "https://www.ristorantedafranco.it/images/hero-image.jpeg",
+        "https://www.ristorantedafranco.it/images/entrata-ristorante-da-franco-montemagno.jpg",
+        "https://www.ristorantedafranco.it/images/interno.jpg"
+      ],
+      "logo": "https://www.ristorantedafranco.it/images/logo.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via di Montemagno 45",
+        "addressLocality": "Montemagno Camaiore",
+        "addressRegion": "Toscana",
+        "postalCode": "55041",
+        "addressCountry": "IT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "43.910692",
+        "longitude": "10.3361982"
+      },
+      "telephone": "+39 0584 951016",
+      "email": "info@ristorantedafranco.it",
+      "url": "https://www.ristorantedafranco.it/",
+      "sameAs": [
+        "https://www.facebook.com/ristorantedafranco/",
+        "https://www.tripadvisor.it/Restaurant_Review-g3802334-d2088052-Reviews-Ristorante_Da_Franco-Montemagno_Camaiore_Province_of_Lucca_Tuscany.html"
+      ],
+      "servesCuisine": ["Italiana", "Toscana", "Pizza", "Griglia"],
+      "priceRange": "€€",
+      "paymentAccepted": ["Cash", "Credit Card"],
+      "currenciesAccepted": "EUR",
+      "hasMenu": "https://www.ristorantedafranco.it/menu.pdf",
+      "acceptsReservations": true,
+      "openingHours": [
+        "Tu 19:00-22:00",
+        "We 19:00-22:00", 
+        "Th 12:00-14:00,19:00-22:00",
+        "Fr 12:00-14:00,19:00-22:00",
+        "Sa 12:00-14:00,19:00-22:00",
+        "Su 12:00-14:00,19:00-22:00"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.5",
+        "reviewCount": "150"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Franco"
+      },
+      "foundingDate": "1994",
+      "slogan": "Cucina tipica toscana, pizzeria e specialità alla griglia"
+    }
+  </script>
 </head>
 <body>
+  <a href="#home" class="skip-link">Salta al contenuto principale</a>
   <header>
-    <div class="logo">
-      <img src="images/logo.jpg" alt="Logo Ristorante" height="100">
+    <div class="header-container">
+      <a href="#home" class="logo" aria-label="Homepage Ristorante Da Franco">
+        <img src="images/logo.jpg" alt="Logo Ristorante Da Franco" height="80">
+      </a>
+      <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span></button>
+  <nav class="main-nav" aria-label="Menu principale">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Chi siamo</a></li>
+          <li><a href="#contact">Contatti</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <main>
-    <section id="home" class="hero">
-      <img src="images/hero-image.jpeg" alt="Exterior of the restaurant" style="display: block;
-      max-width: 100%;
-      height: auto;">
-    </section>
 
-    <section class="section-gallery">
-      <div style="display: flex;flex-direction: column;align-items: center; width: 70%;">
-        <h1 id="txtTitleGallery">Ristorante e pizzeria</h1>
-        <div style="padding: 0px 40px; text-align: center;">
-          <p>
-            Desideri gustare un delizioso piatto di <strong>carne alla griglia?</strong> Stai cercando un ristorante che offra specialità della <strong>cucina toscana</strong>? Oppure, hai voglia di assaporare un primo piatto gustoso con <strong>funghi</strong>?
-          </p>
-          <p>
-            Il <strong>Ristorante Pizzeria "da Franco"</strong> è la scelta perfetta per te!
-          </p>
-        </div>
-      </div>
-      <div class="gallery">
-        <img src="images/entrata-ristorante-da-franco-montemagno.jpg" alt="Gallery image 1">
-        <img src="images/coperto-ristorante-da-franco-montemagno.jpg" alt="Gallery image 2">
-        <img src="images/esterno.jpg" alt="Gallery image 3">
-        <img src="images/interno.jpg" alt="Gallery image 4">
-      </div>
-      <div style="display: flex;flex-direction: column;align-items: center;">
-        <h3 id="txtOrari">I nostri orari</h3>
-        <div style="padding: 0px 40px; text-align: center;">
-          <ul style="list-style: none; padding: 0px; margin: 0px;">
-            <li>Lunedì chiuso tutto il giorno</li>
-            <li>Martedì e Mercoledì: 19:00-22:00</li>
-            <li>Giovedì, Venerdì, Sabato, Domenica: 12:00-14:00&nbsp; 19:00-22:00</li>
-            </ul>
-        </div>
-      </div>
-    </section>
-    <section class="section-review">
-      <div style="display: flex;flex-direction: column;align-items: center;">
-        <div style="
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    ">
-          <svg width="40px" height="40px" viewBox="0 -96 512.2 512.2" id="Layer_2" xmlns="http://www.w3.org/2000/svg"><style>.st0{fill:#08808a}</style><path class="st0" d="M128.2 127.9C92.7 127.9 64 156.6 64 192c0 35.4 28.7 64.1 64.1 64.1 35.4 0 64.1-28.7 64.1-64.1.1-35.4-28.6-64.1-64-64.1zm0 110c-25.3 0-45.9-20.5-45.9-45.9s20.5-45.9 45.9-45.9S174 166.7 174 192s-20.5 45.9-45.8 45.9z"/><circle class="st0" cx="128.4" cy="191.9" r="31.9"/><path class="st0" d="M384.2 127.9c-35.4 0-64.1 28.7-64.1 64.1 0 35.4 28.7 64.1 64.1 64.1 35.4 0 64.1-28.7 64.1-64.1 0-35.4-28.7-64.1-64.1-64.1zm0 110c-25.3 0-45.9-20.5-45.9-45.9s20.5-45.9 45.9-45.9S430 166.7 430 192s-20.5 45.9-45.8 45.9z"/><circle class="st0" cx="384.4" cy="191.9" r="31.9"/><path class="st0" d="M474.4 101.2l37.7-37.4h-76.4C392.9 29 321.8 0 255.9 0c-66 0-136.5 29-179.3 63.8H0l37.7 37.4C14.4 124.4 0 156.5 0 192c0 70.8 57.4 128.2 128.2 128.2 32.5 0 62.2-12.1 84.8-32.1l43.4 31.9 42.9-31.2-.5-1.2c22.7 20.2 52.5 32.5 85.3 32.5 70.8 0 128.2-57.4 128.2-128.2-.1-35.4-14.6-67.5-37.9-90.7zM368 64.8c-60.7 7.6-108.3 57.6-111.9 119.5-3.7-62-51.4-112.1-112.3-119.5 30.6-22 69.6-32.8 112.1-32.8S337.4 42.8 368 64.8zM128.2 288.2C75 288.2 32 245.1 32 192s43.1-96.2 96.2-96.2 96.2 43.1 96.2 96.2c-.1 53.1-43.1 96.2-96.2 96.2zm256 0c-53.1 0-96.2-43.1-96.2-96.2s43.1-96.2 96.2-96.2 96.2 43.1 96.2 96.2c-.1 53.1-43.1 96.2-96.2 96.2z"/></svg>
-          <h3>Dicono di noi</h3>
-        </div>
-        <div style="display: flex;">
-          <div class="box-review">
-            <p>
-              Ampio ristorante di terra, visitato in una serata di basso afflusso. Ciononostante servizio attento e cordiale, bella scelta il menù toscano, buon vino e prezzo assolutamente economico in rapporto alla qualità e alla quantità di quanto mangiato.
-            </p>
-          </div>
-          <div class="box-review">
-            <p>
-              Seconda volta in questo ottimo ristorante. Abbiamo preso come primi risotto ai funghi e tortelli fatti in casa al ragù, superbi. Come secondo una grigliata, buonissima e abbondante. Per finire dolce e amaro!
-            </p>
+  <main role="main">
+    <section id="home" class="hero" aria-label="Presentazione ristorante">
+  <div class="hero-content">
+        <div class="hero-text">
+          <h1>Ristorante Da Franco</h1>
+          <p>Autentica cucina tipica toscana, specialità alla griglia e funghi nel cuore di Montemagno Camaiore. <strong>30 anni di tradizione culinaria</strong>.</p>
+          <div class="cta-group">
+            <a href="#contact" class="cta-btn" aria-label="Vai alla sezione contatti per prenotare">Prenota ora</a>
+            <a href="https://www.google.com/maps?daddr=43.9106715,10.3387359" target="_blank" rel="noopener noreferrer" class="cta-btn btn-outline" aria-label="Apri le indicazioni stradali per raggiungere il ristorante su Google Maps (si apre in una nuova scheda)">Vai al ristorante</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <h2>Ristorante e pizzeria</h2>
-      <p>Descrizione del ristorante e della sua cucina...</p>
+    <section class="section-gallery" aria-label="Galleria fotografica e informazioni">
+      <div class="gallery-intro">
+        <h2>Scopri i nostri piatti e l'atmosfera autentica</h2>
+        <p>Desideri gustare un delizioso piatto di <strong>carne alla griglia</strong>? Cerchi specialità della <strong>cucina toscana tradizionale</strong> o un <strong>primo piatto gustoso con funghi</strong>? Da Franco è la scelta perfetta per un'esperienza culinaria indimenticabile!</p>
+      </div>
+      <div class="gallery" role="img" aria-label="Galleria fotografica del ristorante">
+        <img src="images/entrata-ristorante-da-franco-montemagno.jpg" alt="Ingresso accogliente del Ristorante Da Franco con insegna tradizionale" loading="lazy" width="300" height="220">
+        <img src="images/coperto-ristorante-da-franco-montemagno.jpg" alt="Tavoli elegantemente apparecchiati nella sala del ristorante Da Franco" loading="lazy" width="300" height="220">
+        <img src="images/esterno.jpg" alt="Vista esterna del ristorante con giardino e parcheggio" loading="lazy" width="300" height="220">
+        <img src="images/interno.jpg" alt="Ambiente interno accogliente con arredamento rustico toscano" loading="lazy" width="300" height="220">
+      </div>
+      <div class="orari">
+        <h3><span class="icon" aria-hidden="true">🕒</span> I nostri orari di apertura</h3>
+        <ul>
+          <li><strong>Lunedì:</strong> <span class="chiuso">Chiuso</span></li>
+          <li><strong>Martedì e Mercoledì:</strong> 19:00 - 22:00 <em>(solo cena)</em></li>
+          <li><strong>Giovedì - Domenica:</strong> 12:00 - 14:00 | 19:00 - 22:00 <em>(pranzo e cena)</em></li>
+        </ul>
+        <p><small><span class="icon" aria-hidden="true">ℹ️</span> Si consiglia la prenotazione, specialmente nei weekend</small></p>
+      </div>
+    </section>
+    <section class="section-review" aria-label="Recensioni dei clienti">
+      <div class="review-header">
+        <span class="icon" style="font-size:2rem;color:var(--brand-accent-2);" aria-hidden="true">⭐</span>
+        <h3>Dicono di noi</h3>
+        <a href="https://www.tripadvisor.it/Restaurant_Review-g3802334-d2088052-Reviews-Ristorante_Da_Franco-Montemagno_Camaiore_Province_of_Lucca_Tuscany.html" target="_blank" rel="noopener noreferrer" class="tripadvisor-badge" aria-label="Leggi tutte le recensioni su TripAdvisor">
+          <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_horizontal_secondary_registered.svg" alt="Logo TripAdvisor" height="32" loading="lazy">
+          <span class="visually-hidden">Apre in una nuova finestra</span>
+        </a>
+      </div>
+      <div class="review-list">
+        <blockquote class="box-review">
+          <p><span class="icon" aria-hidden="true">“</span> Ampio ristorante di terra, servizio attento e cordiale, menù toscano autentico, buon vino e prezzo assolutamente economico in rapporto alla qualità e alla quantità di quanto mangiato. <span class="icon" aria-hidden="true">”</span></p>
+          <cite>— Cliente TripAdvisor</cite>
+        </blockquote>
+        <blockquote class="box-review">
+          <p><span class="icon" aria-hidden="true">“</span> Seconda volta in questo ottimo ristorante. Risotto ai funghi e tortelli fatti in casa al ragù superbi. Grigliata buonissima e abbondante. Per finire dolce e amaro! <span class="icon" aria-hidden="true">”</span></p>
+          <cite>— Cliente TripAdvisor</cite>
+        </blockquote>
+      </div>
     </section>
 
-    <section id="menu">
-      <h2>I nostri orari</h2>
-      <ul>
-        <li>Lunch: chiuso tutto il giorno</li>
-        <li>Cena: Venerdì - Domenica, 19:00-22:00</li>
-      </ul>
+    <section id="about" aria-label="Storia e filosofia del ristorante">
+      <h2>La nostra storia</h2>
+      <p>Da oltre <strong>30 anni</strong>, il Ristorante Da Franco accoglie i suoi ospiti in un ambiente familiare e autentico, immerso nelle dolci colline di Montemagno. Proponiamo piatti tipici della tradizione toscana, <strong>pasta fresca fatta in casa</strong>, carni alla griglia di prima qualità e <strong>pizze cotte nel nostro forno a legna</strong>.</p>
+      <p>La nostra passione è offrire qualità, genuinità e ospitalità, mantenendo vive le ricette tradizionali della Versilia e della Garfagnana, utilizzando ingredienti freschi e locali.</p>
     </section>
 
-    <section id="contact">
-      <h2>Contatti</h2>
-      <p>Indirizzo, telefono, email, ecc.</p>
+
+    <section id="contact" aria-label="Contatti e informazioni per la prenotazione">
+      <h2><span class="icon" aria-hidden="true">☎️</span> Contatti e prenotazioni</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <address>
+            <p>
+              <span class="icon" aria-hidden="true">📍</span> 
+              <span>Via di Montemagno 45, 55041<br>Montemagno Camaiore (LU), Toscana</span>
+            </p>
+            <p>
+              <span class="icon" aria-hidden="true">☎️</span> 
+              <a href="tel:+390584951028" aria-label="Chiama il ristorante">+39 0584 951028</a>
+            </p>
+            <!-- <p>
+              <span class="icon" aria-hidden="true">✉️</span> 
+              <a href="mailto:info@ristorantedafranco.it" aria-label="Invia una email">info@ristorantedafranco.it</a>
+            </p>
+            <p>
+              <span class="icon" aria-hidden="true">💬</span> 
+              <a href="https://wa.me/390584951016" target="_blank" rel="noopener noreferrer" aria-label="Contattaci su WhatsApp">Scrivici su WhatsApp</a>
+            </p> -->
+          </address>
+          <div class="reservation-notice">
+            <p><strong><span class="icon" aria-hidden="true">📅</span> Prenotazione consigliata</strong></p>
+            <p>Per garantirti il miglior servizio, ti consigliamo di prenotare il tuo tavolo, specialmente nei weekend e durante i periodi di alta stagione.</p>
+          </div>
+        </div>
+        <div class="map-responsive">
+          <iframe 
+            src="https://www.google.com/maps?q=43.9106715,10.3387359&z=17&output=embed" 
+            width="100%" 
+            height="350" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade" 
+            title="Mappa con posizione esatta del Ristorante Da Franco a Montemagno Camaiore"
+            aria-label="Mappa interattiva che mostra la posizione del ristorante">
+          </iframe>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2023 Ristorante "Da Franco"</p>
+  <footer role="contentinfo" aria-label="Informazioni aggiuntive e link">
+    <div class="footer-content">
+      <p>&copy; 2025 Ristorante Da Franco | Montemagno Camaiore | 
+        <a href="https://www.tripadvisor.it/Restaurant_Review-g3802334-d2088052-Reviews-Ristorante_Da_Franco-Montemagno_Camaiore_Province_of_Lucca_Tuscany.html" target="_blank" rel="noopener noreferrer">Recensioni TripAdvisor</a>
+      </p>
+      <!-- <nav class="footer-social" aria-label="Link social media">
+        <a href="https://www.facebook.com/ristorantedafranco/" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Facebook">
+          <span class="icon" aria-hidden="true">📘</span><span class="visually-hidden">Facebook</span>
+        </a>
+        <a href="https://wa.me/390584951016" target="_blank" rel="noopener noreferrer" aria-label="Contattaci su WhatsApp">
+          <span class="icon" aria-hidden="true">💬</span><span class="visually-hidden">WhatsApp</span>
+        </a>
+        <a href="https://www.instagram.com/ristorantedafranco/" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Instagram">
+          <span class="icon" aria-hidden="true">📷</span><span class="visually-hidden">Instagram</span>
+        </a>
+      </nav> -->
+      <p><small>Ristorante tipico toscano dal 1994 | Cucina tradizionale e pizza al forno a legna</small></p>
+    </div>
   </footer>
 
+</main>
+
+  <!-- Enhanced JavaScript for better UX -->
   <script>
-
-window.addEventListener('DOMContentLoaded', () => {
-  const galleryContent = document.getElementById('gallery-content');
-
-  // Detect the browser language
-  const browserLang = navigator.language || navigator.userLanguage;
-
-  // Render the appropriate gallery content based on the browser language
-  if (browserLang.startsWith('it')) {
-    // Italian gallery
-   
-  } else {
-    // English gallery
-    
-  }
-});
-
+  document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.querySelector('.nav-toggle');
+    const body = document.body;
+    const navLinks = document.querySelectorAll('.main-nav a');
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        body.classList.toggle('nav-open');
+      });
+    }
+    navLinks.forEach(link => link.addEventListener('click', () => {
+      body.classList.remove('nav-open');
+      navToggle && navToggle.setAttribute('aria-expanded','false');
+    }));
+    // Scroll spy per evidenziare link attivo
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          document.querySelectorAll('.main-nav a').forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: [0, 0.25, 0.6] });
+    sections.forEach(sec => observer.observe(sec));
+    // Lazy loading enhancement
+    if ('IntersectionObserver' in window) {
+      const imgObs = new IntersectionObserver((entries,o)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('loaded'); o.unobserve(e.target);} });
+      });
+      document.querySelectorAll('img[loading="lazy"]').forEach(i=> imgObs.observe(i));
+    }
+  });
+  // Preload hero image
+  (()=>{const l=document.createElement('link');l.rel='preload';l.as='image';l.href='images/hero-image.jpeg';document.head.appendChild(l);})();
   </script>
 </body>
 </html>

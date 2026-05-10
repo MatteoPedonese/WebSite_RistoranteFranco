@@ -38,23 +38,14 @@
   
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
+  
   <!-- DNS Prefetch -->
   <link rel="dns-prefetch" href="//www.google.com">
   <link rel="dns-prefetch" href="//static.tacdn.com">
-
-  <!-- Image Preload per Core Web Vitals -->
-  <link rel="preload" href="images/hero-image.jpeg" as="image" type="image/jpeg">
-  <link rel="preload" href="images/entrata-ristorante-da-franco-montemagno.jpg" as="image" type="image/jpeg">
-  <link rel="preload" href="images/coperto-ristorante-da-franco-montemagno.jpg" as="image" type="image/jpeg">
-  <link rel="preload" href="images/interno.jpg" as="image" type="image/jpeg">
-
+  
   <!-- Favicon and Icons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
   
   <!-- Nessun font esterno: solo system font stack per performance -->
 
@@ -109,8 +100,9 @@
   body.nav-open .nav-toggle span::after { top:0; rotate:-42deg; }
     @media (min-width: 880px) { nav.main-nav { position:static; width:auto; translate:0 0; background:transparent; box-shadow:none; backdrop-filter:none; flex-direction:row; inset:auto; padding:0; height:fit-content; flex-direction:row; } nav.main-nav ul { flex-direction:row; } .nav-toggle { display:none; } nav.main-nav a { padding:.75rem 1rem; font-size:1rem; } nav.main-nav a::after { inset:auto .75rem 6px .75rem; } }
   .hero { position:relative; width:100%; min-height:clamp(500px,70vh,780px); display:flex; align-items:center; justify-content:center; overflow:hidden; }
-  .hero-bg { position:absolute; inset:0; width:100%; height:100%; background:url('images/hero-image.webp') center/cover no-repeat; z-index:1; display:block; }
-  .hero-content { position:relative; z-index:3; max-width:950px; margin:0 auto; padding:clamp(3.5rem,8vw,6rem) clamp(1rem,4vw,2.5rem); display:flex; flex-direction:column; text-align:center; gap:1.8rem; }
+  .hero::after { content:""; position:absolute; inset:0; background:url('images/hero-image.jpeg') center/cover no-repeat; z-index:0; transform:scale(1.05); }
+  .hero::before { content:""; position:absolute; inset:0; background:linear-gradient(200deg,#00000055 0%,#000000aa 65%, #000000dc 100%); z-index:1; }
+  .hero-content { position:relative; z-index:2; max-width:950px; margin:0 auto; padding:clamp(3.5rem,8vw,6rem) clamp(1rem,4vw,2.5rem); display:flex; flex-direction:column; text-align:center; gap:1.8rem; }
   .hero-text h1 { font-size:clamp(2.2rem,5.5vw,3.4rem); line-height:1.05; letter-spacing:-.5px; background:linear-gradient(90deg,#fff,#f2e9dd,#fff); -webkit-background-clip:text; background-clip:text; color:transparent; text-wrap:balance; }
     .hero-text p { font-size:clamp(1.05rem,1.2vw + .9rem,1.35rem); color:#f4f4f4; max-width:60ch; text-wrap:pretty; }
   .cta-btn { background:var(--brand-accent); color:#fff; display:inline-flex; align-items:center; gap:.6rem; padding:1rem 1.75rem; border:none; border-radius:1000px; font-weight:600; font-size:1rem; letter-spacing:.5px; text-decoration:none; line-height:1; box-shadow:0 4px 12px -4px rgba(0,0,0,.35); transition:background var(--transition), transform var(--transition), box-shadow var(--transition); }
@@ -120,17 +112,18 @@
   .btn-outline { background:rgba(255,255,255,0.08); color:#fff; border:2px solid var(--brand-accent-2); box-shadow:0 4px 12px -4px rgba(0,0,0,.35); }
   .btn-outline:hover, .btn-outline:focus-visible { background:var(--brand-accent-2); color:#1a1a1a; }
     @media (prefers-reduced-motion: reduce) { * { animation-duration:1ms !important; animation-iteration-count:1 !important; transition-duration:1ms !important; scroll-behavior:auto !important;} }
-  @media (prefers-color-scheme: dark) { body { background:#111; color:#f1f1f1; } header { background:rgba(20,20,20,0.75); border-color:#222; } nav.main-nav { background:#1c1c1c; } nav.main-nav a { color:#f0e6dc; } nav.main-nav a:hover { background:rgba(255,255,255,0.08); } .hero-text p { color:#e7e7e7; } .cta-btn { background:var(--brand-accent); } .cta-btn:hover, .cta-btn:focus-visible { background:var(--brand-accent-2); } .btn-outline { background:rgba(255,255,255,0.12); } }
+  @media (prefers-color-scheme: dark) { body { background:#111; color:#f1f1f1; } header { background:rgba(20,20,20,0.75); border-color:#222; } nav.main-nav { background:#1c1c1c; } nav.main-nav a { color:#f0e6dc; } nav.main-nav a:hover { background:rgba(255,255,255,0.08); } .hero::before { background:linear-gradient(200deg,#00000055 0%,#000000b5 65%, #000000f0 100%); } .hero-text p { color:#e7e7e7; } .cta-btn { background:var(--brand-accent); } .cta-btn:hover, .cta-btn:focus-visible { background:var(--brand-accent-2); } .btn-outline { background:rgba(255,255,255,0.12); } }
   </style>
   
   <!-- Main Stylesheet (non-critical) -->
-  <link rel="stylesheet" href="styles.css?v=20260411">
+  <link rel="stylesheet" href="styles.css">
   
   <!-- Canonical and Hreflang -->
   <link rel="canonical" href="https://www.ristorantedafranco.it/">
   <link rel="alternate" hreflang="it" href="https://www.ristorantedafranco.it/">
   <link rel="alternate" hreflang="x-default" href="https://www.ristorantedafranco.it/">
   
+  <!-- Enhanced Schema.org JSON-LD -->
   <!-- Enhanced Schema.org JSON-LD -->
   <script type="application/ld+json">
     {
@@ -142,9 +135,7 @@
       "image": [
         "https://www.ristorantedafranco.it/images/hero-image.jpeg",
         "https://www.ristorantedafranco.it/images/entrata-ristorante-da-franco-montemagno.jpg",
-        "https://www.ristorantedafranco.it/images/coperto-ristorante-da-franco-montemagno.jpg",
-        "https://www.ristorantedafranco.it/images/interno.jpg",
-        "https://www.ristorantedafranco.it/images/esterno.jpg"
+        "https://www.ristorantedafranco.it/images/interno.jpg"
       ],
       "logo": "https://www.ristorantedafranco.it/images/logo.jpg",
       "address": {
@@ -161,6 +152,7 @@
         "longitude": "10.3361982"
       },
       "telephone": "+39 0584 951016",
+      "email": "info@ristorantedafranco.it",
       "url": "https://www.ristorantedafranco.it/",
       "sameAs": [
         "https://www.facebook.com/ristorantedafranco/",
@@ -168,12 +160,13 @@
       ],
       "servesCuisine": ["Italiana", "Toscana", "Pizza", "Griglia"],
       "priceRange": "€€",
-      "paymentAccepted": ["Cash", "Credit Card", "PayPal"],
+      "paymentAccepted": ["Cash", "Credit Card"],
       "currenciesAccepted": "EUR",
+      "hasMenu": "https://www.ristorantedafranco.it/menu.pdf",
       "acceptsReservations": true,
       "openingHours": [
         "Tu 19:00-22:00",
-        "We 19:00-22:00",
+        "We 19:00-22:00", 
         "Th 12:00-14:00,19:00-22:00",
         "Fr 12:00-14:00,19:00-22:00",
         "Sa 12:00-14:00,19:00-22:00",
@@ -182,62 +175,7 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.5",
-        "reviewCount": "150",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Menu del Ristorante Da Franco",
-        "itemListElement": [
-          {
-            "@type": "OfferCatalog",
-            "name": "Antipasti",
-            "itemListElement": [
-              {"@type": "Offer", "itemOffered": {"name": "Crostini Toscani", "description": "Crostini con fegatini, cipolle caramellate e verdure grigliate"}},
-              {"@type": "Offer", "itemOffered": {"name": "Tagliere di Salumi e Formaggi", "description": "Selezione di salumi toscani e formaggi di montagna"}},
-              {"@type": "Offer", "itemOffered": {"name": "Bruschette della Casa", "description": "Pomodoro fresco, basilico e olio extra vergine di oliva"}}
-            ]
-          },
-          {
-            "@type": "OfferCatalog",
-            "name": "Primi Piatti",
-            "itemListElement": [
-              {"@type": "Offer", "itemOffered": {"name": "Tortelli di Patate al Ragù", "description": "Pasta fresca ripiena di patate e formaggio con ragù di carne"}},
-              {"@type": "Offer", "itemOffered": {"name": "Pappardelle al Cinghiale", "description": "Pasta fresca larga con sugo di cinghiale della Versilia"}},
-              {"@type": "Offer", "itemOffered": {"name": "Risotto ai Funghi Porceti", "description": "Risotto cremoso con funghi porceti freschi di stagione"}},
-              {"@type": "Offer", "itemOffered": {"name": "Zuppa di Farro", "description": "Zuppa di cereali con verdure di stagione e crostini"}}
-            ]
-          },
-          {
-            "@type": "OfferCatalog",
-            "name": "Secondi",
-            "itemListElement": [
-              {"@type": "Offer", "itemOffered": {"name": "Bistecca alla Fiorentina", "description": "Bistecca di scottona toscana cotta alla brace"}},
-              {"@type": "Offer", "itemOffered": {"name": "Filetto al Pepe Rosa", "description": "Filetto di manzo con salsa al pepe rosa e verdure grigliate"}},
-              {"@type": "Offer", "itemOffered": {"name": "Costine alla BBQ", "description": "Costine di maiale marinate e caramellate al barbecue"}}
-            ]
-          },
-          {
-            "@type": "OfferCatalog",
-            "name": "Pizza",
-            "itemListElement": [
-              {"@type": "Offer", "itemOffered": {"name": "Margherita D.O.", "description": "Pomodoro, mozzarella fior di latte, basilico fresco, olio evo - Forno a legna"}},
-              {"@type": "Offer", "itemOffered": {"name": "Diavola", "description": "Pomodoro, mozzarella, pomodoro datterini, fiordilatte, basilico - Forno a legna"}},
-              {"@type": "Offer", "itemOffered": {"name": "Capricciosa", "description": "Pomodoro, mozzarella, prosciutto cotto, funghi, olive - Forno a legna"}},
-              {"@type": "Offer", "itemOffered": {"name": "Quattro Formaggi", "description": "Mozzarella, gorgonzola, parmigiano, pecorino - Forno a legna"}}
-            ]
-          },
-          {
-            "@type": "OfferCatalog",
-            "name": "Dolci",
-            "itemListElement": [
-              {"@type": "Offer", "itemOffered": {"name": "Panna Cotta ai Frutti di Bosco", "description": "Crema caramellata con salsa di frutti di bosco"}},
-              {"@type": "Offer", "itemOffered": {"name": "Tiramisù della Casa", "description": "Dolce tradizionale veneziano con caffè e cacao"}},
-              {"@type": "Offer", "itemOffered": {"name": "Torta della Nonna", "description": "Torta con crema pasticcera e pinoli"}}
-            ]
-          }
-        ]
+        "reviewCount": "150"
       },
       "founder": {
         "@type": "Person",
@@ -245,64 +183,6 @@
       },
       "foundingDate": "1994",
       "slogan": "Cucina tipica toscana, pizzeria e specialità alla griglia"
-    }
-  </script>
-
-  <!-- FAQ Schema -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Come si fa a prenotare un tavolo?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Puoi prenotare chiamando al +39 0584 951016 o cliccando sul pulsante 'Prenota ora' nella pagina. Si consiglia la prenotazione, specialmente nei weekend."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Quali sono gli orari di apertura?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Apriamo dal martedì alla domenica. Martedì e mercoledì solo cena (19:00-22:00). Da giovedì a domenica sia pranzo (12:00-14:00) che cena (19:00-22:00). Lunedì siamo chiusi."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Avete opzioni senza glutine o vegetariane?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sì, offriamo opzioni vegetariane e vegane nel menu. Per quanto riguarda il glutine, alcunenostre pizze e pasta fresca possono contenere glutine. Ti preghiamo di informare il nostro staff delle tue esigenze alimentari al momento dell'ordinazione."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "C'è parcheggio disponibile?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sì, abbiamo un parcheggio privato disponibile per i nostri clienti. Il parcheggio è gratuito e si trova di fronte al ristorante."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Il ristorante è accessibile ai disabili?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sì, il Ristorante Da Franco è completamente accessibile ai disabili. Abbiamo rampe di accesso, bagni accessibili e spazio sufficiente per il passaggio di sedie a rotelle."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Accettate prenotazioni per eventi speciali?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sì, possiamo organizzare eventi speciali come compleanni, festività e riunioni di gruppo. Contattaci all'indirizzo info@ristorantedafranco.it per discutere le tue esigenze."
-          }
-        }
-      ]
     }
   </script>
 </head>
@@ -313,10 +193,6 @@
       <a href="#home" class="logo" aria-label="Homepage Ristorante Da Franco">
         <img src="images/logo.jpg" alt="Logo Ristorante Da Franco" height="80">
       </a>
-      <div class="header-phone-link desktop-phone">
-        <span aria-hidden="true">📞</span>
-        <a href="tel:+390584951016">+39 0584 951016</a>
-      </div>
       <button class="nav-toggle" aria-label="Apri menu" aria-expanded="false"><span></span></button>
   <nav class="main-nav" aria-label="Menu principale">
         <ul>
@@ -328,29 +204,10 @@
     </div>
   </header>
 
-  <!-- Back to Top Button -->
-  <button class="back-to-top" aria-label="Torna su" title="Torna all'inizio">
-    <span aria-hidden="true">↑</span>
-  </button>
-
-  <!-- Scroll Progress Indicator -->
-  <div class="scroll-progress" aria-hidden="true"></div>
-
-  <!-- Mobile Sticky CTA Bar -->
-  <div class="mobile-cta-bar">
-    <a href="tel:+390584951016" class="cta-call" aria-label="Chiama il ristorante">
-      <span aria-hidden="true">📞</span> Chiama
-    </a>
-    <a href="#contact" class="cta-reserve" aria-label="Prenota un tavolo">
-      <span aria-hidden="true">📅</span> Prenota
-    </a>
-  </div>
-
 
   <main role="main">
     <section id="home" class="hero" aria-label="Presentazione ristorante">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-content">
+  <div class="hero-content">
         <div class="hero-text">
           <h1>Ristorante Da Franco</h1>
           <p>Autentica cucina tipica toscana, specialità alla griglia e funghi nel cuore di Montemagno Camaiore. <strong>30 anni di tradizione culinaria</strong>.</p>
@@ -367,19 +224,11 @@
         <h2>Scopri i nostri piatti e l'atmosfera autentica</h2>
         <p>Desideri gustare un delizioso piatto di <strong>carne alla griglia</strong>? Cerchi specialità della <strong>cucina toscana tradizionale</strong> o un <strong>primo piatto gustoso con funghi</strong>? Da Franco è la scelta perfetta per un'esperienza culinaria indimenticabile!</p>
       </div>
-      <div class="gallery" role="img" aria-label="Galleria fotografica del ristorante Da Franco a Montemagno Camaiore">
-        <img src="images/entrata-ristorante-da-franco-montemagno.jpg"
-             alt="Ingresso accogliente del Ristorante Da Franco - Montemagno Camaiore: insegna tradizionale con fascia rossa e nome scritto a mano, vetrina vittoriana"
-             loading="lazy" width="300" height="220" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 300px">
-        <img src="images/coperto-ristorante-da-franco-montemagno.jpg"
-             alt="Tavoli elegantemente apparecchiati nel ristorante Da Franco - Montemagno: tovaglie bianche, piatti di porcellana, bicchieri di vino, fiori freschi"
-             loading="lazy" width="300" height="220" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 300px">
-        <img src="images/esterno.jpg"
-             alt="Esterno del Ristorante Da Franco - Montemagno Camaiore: facciata in stile toscano, terrazzo con fiori, parcheggio privato per clienti"
-             loading="lazy" width="300" height="220" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 300px">
-        <img src="images/interno.jpg"
-             alt="Ambiente interno accogliente del Ristorante Da Franco - Montemagno: arredamento rustico toscano, pareti in legno, luci soffuse, camino"
-             loading="lazy" width="300" height="220" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 300px">
+      <div class="gallery" role="img" aria-label="Galleria fotografica del ristorante">
+        <img src="images/entrata-ristorante-da-franco-montemagno.jpg" alt="Ingresso accogliente del Ristorante Da Franco con insegna tradizionale" loading="lazy" width="300" height="220">
+        <img src="images/coperto-ristorante-da-franco-montemagno.jpg" alt="Tavoli elegantemente apparecchiati nella sala del ristorante Da Franco" loading="lazy" width="300" height="220">
+        <img src="images/esterno.jpg" alt="Vista esterna del ristorante con giardino e parcheggio" loading="lazy" width="300" height="220">
+        <img src="images/interno.jpg" alt="Ambiente interno accogliente con arredamento rustico toscano" loading="lazy" width="300" height="220">
       </div>
       <div class="orari">
         <h3><span class="icon" aria-hidden="true">🕒</span> I nostri orari di apertura</h3>
@@ -429,9 +278,17 @@
               <span>Via di Montemagno 45, 55041<br>Montemagno Camaiore (LU), Toscana</span>
             </p>
             <p>
-              <span class="icon" aria-hidden="true">☎️</span>
-              <a href="tel:+390584951016" aria-label="Chiama il ristorante">+39 0584 951016</a>
+              <span class="icon" aria-hidden="true">☎️</span> 
+              <a href="tel:+390584951028" aria-label="Chiama il ristorante">+39 0584 951028</a>
             </p>
+            <!-- <p>
+              <span class="icon" aria-hidden="true">✉️</span> 
+              <a href="mailto:info@ristorantedafranco.it" aria-label="Invia una email">info@ristorantedafranco.it</a>
+            </p>
+            <p>
+              <span class="icon" aria-hidden="true">💬</span> 
+              <a href="https://wa.me/390584951016" target="_blank" rel="noopener noreferrer" aria-label="Contattaci su WhatsApp">Scrivici su WhatsApp</a>
+            </p> -->
           </address>
           <div class="reservation-notice">
             <p><strong><span class="icon" aria-hidden="true">📅</span> Prenotazione consigliata</strong></p>
@@ -460,11 +317,17 @@
       <p>&copy; 2025 Ristorante Da Franco | Montemagno Camaiore | 
         <a href="https://www.tripadvisor.it/Restaurant_Review-g3802334-d2088052-Reviews-Ristorante_Da_Franco-Montemagno_Camaiore_Province_of_Lucca_Tuscany.html" target="_blank" rel="noopener noreferrer">Recensioni TripAdvisor</a>
       </p>
-      <nav class="footer-social" aria-label="Link social media">
+      <!-- <nav class="footer-social" aria-label="Link social media">
         <a href="https://www.facebook.com/ristorantedafranco/" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Facebook">
           <span class="icon" aria-hidden="true">📘</span><span class="visually-hidden">Facebook</span>
         </a>
-      </nav>
+        <a href="https://wa.me/390584951016" target="_blank" rel="noopener noreferrer" aria-label="Contattaci su WhatsApp">
+          <span class="icon" aria-hidden="true">💬</span><span class="visually-hidden">WhatsApp</span>
+        </a>
+        <a href="https://www.instagram.com/ristorantedafranco/" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Instagram">
+          <span class="icon" aria-hidden="true">📷</span><span class="visually-hidden">Instagram</span>
+        </a>
+      </nav> -->
       <p><small>Ristorante tipico toscano dal 1994 | Cucina tradizionale e pizza al forno a legna</small></p>
     </div>
   </footer>
@@ -488,7 +351,6 @@
       body.classList.remove('nav-open');
       navToggle && navToggle.setAttribute('aria-expanded','false');
     }));
-
     // Scroll spy per evidenziare link attivo
     const sections = [...document.querySelectorAll('main section[id]')];
     const observer = new IntersectionObserver(entries => {
@@ -500,7 +362,6 @@
       });
     }, { rootMargin: '-40% 0px -50% 0px', threshold: [0, 0.25, 0.6] });
     sections.forEach(sec => observer.observe(sec));
-
     // Lazy loading enhancement
     if ('IntersectionObserver' in window) {
       const imgObs = new IntersectionObserver((entries,o)=>{
@@ -508,56 +369,7 @@
       });
       document.querySelectorAll('img[loading="lazy"]').forEach(i=> imgObs.observe(i));
     }
-
-    // Back to Top Button
-    const backToTopBtn = document.querySelector('.back-to-top');
-    if (backToTopBtn) {
-      window.addEventListener('scroll', () => {
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const scrollPercent = (scrollPosition / (documentHeight - windowHeight)) * 100;
-
-        // Show/hide button based on scroll
-        if (scrollPosition > 300) {
-          backToTopBtn.style.display = 'flex';
-        } else {
-          backToTopBtn.style.display = 'none';
-        }
-
-        // Update scroll progress bar
-        const scrollProgress = document.querySelector('.scroll-progress');
-        if (scrollProgress) {
-          scrollProgress.style.width = scrollPercent + '%';
-        }
-      });
-
-      backToTopBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    // Animation on scroll per le sezioni
-    const fadeSections = document.querySelectorAll('#about, #contact, .section-review, .section-gallery');
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '-50px' });
-
-    fadeSections.forEach(section => {
-      section.style.opacity = '0';
-      section.style.transform = 'translateY(30px)';
-      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      fadeObserver.observe(section);
-    });
   });
-
   // Preload hero image
   (()=>{const l=document.createElement('link');l.rel='preload';l.as='image';l.href='images/hero-image.jpeg';document.head.appendChild(l);})();
   </script>

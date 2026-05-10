@@ -116,11 +116,23 @@ section {
   margin: 0rem 0;
 }
 
-section#about, section#contact { background:var(--surface); max-width:1200px; margin: clamp(2rem,4vw,3rem) auto; border-radius:32px; box-shadow:0 4px 22px -8px rgba(0,0,0,.12); padding: clamp(2.5rem,5vw,3.5rem) clamp(1.2rem,3vw,2.5rem); }
+section#about, section#menu, section#contact { background:var(--surface); max-width:1200px; margin: clamp(2rem,4vw,3rem) auto; border-radius:32px; box-shadow:0 4px 22px -8px rgba(0,0,0,.12); padding: clamp(2.5rem,5vw,3.5rem) clamp(1.2rem,3vw,2.5rem); }
 
-section#about h2, section#contact h2 { font-size:clamp(1.9rem,4vw,2.6rem); color:var(--brand-accent); margin-bottom:1.4rem; text-align:center; font-weight:700; }
+section#about h2, section#menu h2, section#contact h2 { font-size:clamp(1.9rem,4vw,2.6rem); color:var(--brand-accent); margin-bottom:1.4rem; text-align:center; font-weight:700; }
 
 section#about p { font-size:1.05rem; line-height:1.65; color:var(--text-muted); text-align:center; max-width:820px; margin:0 auto; }
+
+/* Menu section */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.menu-list li { background:var(--surface-alt); padding:1.25rem 1.4rem; border-radius:20px; box-shadow:0 4px 14px -6px rgba(0,0,0,.1); font-size:1.02rem; transition:transform .55s, box-shadow .55s; }
+.menu-list li:hover { transform:translateY(-4px); box-shadow:0 14px 32px -12px rgba(0,0,0,.25); }
 
 /* Contatti e mappa */
 address {
@@ -208,7 +220,12 @@ a:focus-visible, button:focus-visible, .cta-btn:focus-visible, .nav-toggle:focus
 
 .box-review cite { display:block; margin-top:1rem; font-size:.85rem; color:var(--brand-accent); font-weight:600; text-align:right; }
 
-/* Contatti e mappa */
+.menu-preview { display:flex; flex-direction:column; gap:2rem; }
+
+.menu-cta { text-align:center; }
+
+.menu-cta p { margin-top:1rem; color:var(--text-muted); }
+
 .contact-content { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(2rem,4vw,3rem); align-items:start; }
 
 /* Grid responsive già auto-fit */
@@ -236,293 +253,9 @@ html { scroll-padding-top: calc(var(--header-height) + 1rem); }
 /* Dark mode refinements */
 @media (prefers-color-scheme:dark){
   :root { --surface:#1c1c1c; --surface-alt:#242424; --text-muted:#c4c4c4; }
-  section#about, section#contact { box-shadow:0 10px 34px -14px rgba(0,0,0,.6); }
+  section#about, section#menu, section#contact { box-shadow:0 10px 34px -14px rgba(0,0,0,.6); }
   .box-review { background:#222; border-color:#2c2c2c; }
   .gallery img { box-shadow:0 10px 28px -10px rgba(0,0,0,.6); }
   .section-review { background:linear-gradient(145deg,#1f1f1f,#252525); }
   footer { background:linear-gradient(120deg,#44280f,#7d471f); }
-}
-
-/* =========================================
-   MOBILE-First Enhancements (Task 2)
-   Sticky CTA Bar, Click-to-Call, Scroll UX
-   ========================================= */
-
-/* Sticky Bottom CTA Bar per Mobile */
-.mobile-cta-bar {
-  display: none;
-}
-
-@media (max-width: 879px) {
-  .mobile-cta-bar {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 0.75rem 1rem;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
-    z-index: 999;
-    gap: 1rem;
-    animation: slide-up 0.4s cubic-bezier(0.16, 0.84, 0.44, 1);
-  }
-
-  .mobile-cta-bar a {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1rem;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
-
-  .cta-call {
-    background: var(--brand-accent);
-    color: #fff;
-  }
-
-  .cta-call:hover, .cta-call:active {
-    background: var(--brand-accent-2);
-    transform: translateY(-2px);
-  }
-
-  .cta-reserve {
-    background: var(--brand-accent-2);
-    color: var(--brand-text);
-  }
-
-  .cta-reserve:hover, .cta-reserve:active {
-    background: #fff;
-    transform: translateY(-2px);
-  }
-
-  /* Aggiungi padding bottom al body per non coprire il contenuto */
-  body { padding-bottom: 70px; }
-}
-
-/* Desktop: phone link nella header */
-.desktop-phone {
-  display: none;
-}
-
-@media (min-width: 880px) {
-  .desktop-phone {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .desktop-phone a {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 700;
-    color: var(--brand-accent);
-    text-decoration: none;
-    font-size: 0.95rem;
-    padding: 0.6rem 1rem;
-    background: rgba(125, 71, 31, 0.08);
-    border-radius: 8px;
-    transition: background 0.2s ease;
-  }
-
-  .desktop-phone a:hover {
-    background: rgba(125, 71, 31, 0.15);
-  }
-
-  .desktop-phone span {
-    font-size: 1.1rem;
-  }
-}
-
-/* =========================================
-   MODERN DESIGN 2026 (Task 4)
-   Dark Glass Hero, Animations, Parallax
-   ========================================= */
-
-/* NOTE: Hero inline styles are defined in index.html <style> tag.
-   The following CSS has been commented out to avoid conflicts:
-   - .hero-content, .hero-text h1/p, .hero .cta-btn
-   - These override inline styles and break the hero visibility
-*/
-
-/* Animations keyframes (NOT conflicting with inline styles) */
-@keyframes hero-scale {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.15);
-  }
-}
-
-@keyframes gradient-move {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Parallax layer - commented out to avoid conflicts */
-/*
-.parallax-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: translateZ(0);
-}
-*/
-
-/* Enhanced animations per sezioni (non-conflicting) */
-section[id] {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-section[id].in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Menu section (even without HTML, keeping styles for future use) */
-.menu-intro {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 2rem;
-  font-size: clamp(1.05rem, 1.2vw + 0.9rem, 1.25rem);
-  color: var(--text-muted);
-  line-height: 1.65;
-}
-
-/* =========================================
-   PERFORMANCE & ACCESSIBILITY (Task 5)
-   ========================================= */
-
-/* Preload key images */
-@media (prefers-reduced-motion: reduce) {
-  .hero::before {
-    animation: none;
-  }
-  .hero-text h1 {
-    animation: none;
-  }
-  .gallery img {
-    transition: none;
-  }
-  .box-review {
-    transition: none;
-  }
-  .cta-btn {
-    transition: none;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: more) {
-  .cta-btn {
-    border: 2px solid #fff;
-  }
-  .back-to-top {
-    border: 2px solid #fff;
-  }
-}
-
-/* Reduced transparency for better readability */
-@media (prefers-contrast: more) {
-  header {
-    background: rgba(255, 255, 255, 0.95);
-  }
-  .mobile-cta-bar {
-    background: rgba(255, 255, 255, 0.95);
-  }
-}
-
-/* Back to Top Button */
-.back-to-top {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: var(--brand-accent);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-  transition: all 0.3s ease;
-  z-index: 998;
-}
-
-.back-to-top:hover {
-  background: var(--brand-accent-2);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-}
-
-@media (max-width: 879px) {
-  .back-to-top {
-    bottom: 85px;
-  }
-}
-
-/* Scroll progress indicator */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--brand-accent), var(--brand-accent-2));
-  width: 0;
-  z-index: 1001;
-  transition: width 0.2s ease;
-}
-
-/* Animation slide-up */
-@keyframes slide-up {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Header phone link */
-.header-phone-link {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.header-phone-link span {
-  font-size: 1.2rem;
-}
-
-.header-phone-link a {
-  color: var(--brand-accent);
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.9rem;
 }

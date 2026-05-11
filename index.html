@@ -360,7 +360,6 @@
     const prenotaCTA = document.getElementById('cta-prenota-hero');
     const mappaCTA = document.getElementById('cta-mappa-hero');
     const contactMap = document.getElementById('contact-map');
-    const mapIframe = contactMap ? contactMap.querySelector('iframe') : null;
 
     if (navToggle) {
       navToggle.addEventListener('click', () => {
@@ -386,21 +385,24 @@
       });
     }
 
-    if (contactMap && mapIframe) {
-      let hasTrackedMapInteraction = false;
-      const trackMapInteraction = (interactionType) => {
-        if (hasTrackedMapInteraction) return;
-        hasTrackedMapInteraction = true;
-        trackEvent('mappa_embed_interaction', { interaction_type: interactionType });
-      };
+    if (contactMap) {
+      const mapIframe = contactMap.querySelector('iframe');
+      if (mapIframe) {
+        let hasTrackedMapInteraction = false;
+        const trackMapInteraction = (interactionType) => {
+          if (hasTrackedMapInteraction) return;
+          hasTrackedMapInteraction = true;
+          trackEvent('mappa_embed_interaction', { interaction_type: interactionType });
+        };
 
-      contactMap.addEventListener('pointerdown', () => {
-        trackMapInteraction('pointerdown');
-      }, { once: true, capture: true });
+        contactMap.addEventListener('pointerdown', () => {
+          trackMapInteraction('pointerdown');
+        }, { once: true, capture: true });
 
-      mapIframe.addEventListener('focus', () => {
-        trackMapInteraction('focus');
-      }, { once: true });
+        mapIframe.addEventListener('focus', () => {
+          trackMapInteraction('focus');
+        }, { once: true });
+      }
     }
 
     // Scroll spy per evidenziare link attivo

@@ -42,6 +42,15 @@
   <!-- DNS Prefetch -->
   <link rel="dns-prefetch" href="//www.google.com">
   <link rel="dns-prefetch" href="//static.tacdn.com">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K4MWE92EE0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K4MWE92EE0');
+  </script>
   
   <!-- Favicon and Icons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -214,8 +223,8 @@
           <h1>Ristorante Da Franco</h1>
           <p>Autentica cucina tipica toscana, specialità alla griglia e funghi nel cuore di Montemagno Camaiore. <strong>30 anni di tradizione culinaria</strong>.</p>
           <div class="cta-group">
-            <a href="#contact" class="cta-btn" aria-label="Vai alla sezione contatti per prenotare">Prenota ora</a>
-            <a href="https://www.google.com/maps?daddr=43.9106715,10.3387359" target="_blank" rel="noopener noreferrer" class="cta-btn btn-outline" aria-label="Apri le indicazioni stradali per raggiungere il ristorante su Google Maps (si apre in una nuova scheda)">Vai al ristorante</a>
+            <a href="#contact" class="cta-btn" id="cta-prenota-hero" aria-label="Vai alla sezione contatti per prenotare">Prenota ora</a>
+            <a href="https://www.google.com/maps?daddr=43.9106715,10.3387359" target="_blank" rel="noopener noreferrer" class="cta-btn btn-outline" id="cta-mappa-hero" aria-label="Apri le indicazioni stradali per raggiungere il ristorante su Google Maps (si apre in una nuova scheda)">Vai al ristorante</a>
           </div>
         </div>
       </div>
@@ -297,7 +306,7 @@
             <p>Per garantirti il miglior servizio, ti consigliamo di prenotare il tuo tavolo, specialmente nei weekend e durante i periodi di alta stagione.</p>
           </div>
         </div>
-        <div class="map-responsive">
+        <div class="map-responsive" id="contact-map">
           <iframe 
             src="https://www.google.com/maps?q=43.9106715,10.3387359&z=17&output=embed" 
             width="100%" 
@@ -339,9 +348,19 @@
   <!-- Enhanced JavaScript for better UX -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
+    const trackEvent = (eventName, params = {}) => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, params);
+      }
+    };
+
     const navToggle = document.querySelector('.nav-toggle');
     const body = document.body;
     const navLinks = document.querySelectorAll('.main-nav a');
+    const prenotaCTA = document.getElementById('cta-prenota-hero');
+    const mappaCTA = document.getElementById('cta-mappa-hero');
+    const contactMap = document.getElementById('contact-map');
+
     if (navToggle) {
       navToggle.addEventListener('click', () => {
         const expanded = navToggle.getAttribute('aria-expanded') === 'true';
@@ -353,6 +372,39 @@
       body.classList.remove('nav-open');
       navToggle && navToggle.setAttribute('aria-expanded','false');
     }));
+
+    if (prenotaCTA) {
+      prenotaCTA.addEventListener('click', () => {
+        trackEvent('cta_prenotazione_click', { cta_position: 'hero' });
+      });
+    }
+
+    if (mappaCTA) {
+      mappaCTA.addEventListener('click', () => {
+        trackEvent('cta_mappa_click', { cta_position: 'hero' });
+      });
+    }
+
+    if (contactMap) {
+      const mapIframe = contactMap.querySelector('iframe');
+      if (mapIframe) {
+        let hasTrackedMapInteraction = false;
+        const trackMapInteraction = (interactionType) => {
+          if (hasTrackedMapInteraction) return;
+          hasTrackedMapInteraction = true;
+          trackEvent('mappa_embed_interaction', { interaction_type: interactionType });
+        };
+
+        contactMap.addEventListener('pointerdown', () => {
+          trackMapInteraction('pointerdown');
+        }, { once: true, capture: true });
+
+        mapIframe.addEventListener('focus', () => {
+          trackMapInteraction('focus');
+        }, { once: true });
+      }
+    }
+
     // Scroll spy per evidenziare link attivo
     const sections = [...document.querySelectorAll('main section[id]')];
     const observer = new IntersectionObserver(entries => {
